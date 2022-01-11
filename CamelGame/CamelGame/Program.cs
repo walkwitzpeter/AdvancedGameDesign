@@ -101,6 +101,7 @@ namespace CamelGame
                 else if (String.Equals(userCommand, "e", StringComparison.CurrentCultureIgnoreCase))
                 {
                     // Printing out their stats
+                    Console.WriteLine("Drinks left in the Canteen: " + numOfDrinks);
                     Console.WriteLine("Hydration Level: " + hydrationLevel);
                     Console.WriteLine("Distance left to travel: " + distanceLeft);
                     Console.WriteLine("Camel Energy Levels: " + camelEnergy);
@@ -110,11 +111,47 @@ namespace CamelGame
                     done = true;
                     Console.WriteLine("Congragulations you are a quitter. You will die of shame instead of thirst");
                 }
-
+                // Unknown Command
                 else
                 {
                     Console.WriteLine("Unknown command.");
                 }
+                
+                // Checking to see if they are dead, or done
+                if (hydrationLevel <= 0 || camelEnergy <= 0)
+                {
+                    String collapseString = "";
+                    if (hydrationLevel <= 0) {
+                        collapseString = "thirst.";
+                    }
+                    else if (camelEnergy <= 0)
+                    {
+                        collapseString = "an exhausted camel.";
+                    }
+                    Console.WriteLine("You have collapsed in the middle of the desert from " + collapseString);
+                    done = true;
+                }
+                else if (distanceLeft <= 0)
+                {
+                    Console.WriteLine("You have succesfully escaped with the stolen camel. Good job your a horrible human being.");
+                    done = true;
+                }
+
+                if (done)
+                {
+                    Console.WriteLine("Do you want to play again? (y/n)");
+                    userCommand = Console.ReadLine();
+                    if (userCommand.Equals("y", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        numOfDrinks = Constants.startingDrinks;
+                        distanceLeft = Constants.finalDest;
+                        hydrationLevel = Constants.startingHydration;
+                        camelEnergy = Constants.startingCamelEnergy;
+                        done = false;
+                    }
+                }
+
+                  
             }
         }
 

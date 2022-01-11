@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\peter.walkwitz\\source\\repos\\CamelGame\\CamelGame\\CamelGame.csproj": {}
+    "C:\\Users\\peter.walkwitz\\source\\repos\\AdvancedGameDesign\\CamelGame\\CamelGame\\CamelGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\peter.walkwitz\\source\\repos\\CamelGame\\CamelGame\\CamelGame.csproj": {
+    "C:\\Users\\peter.walkwitz\\source\\repos\\AdvancedGameDesign\\CamelGame\\CamelGame\\CamelGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\peter.walkwitz\\source\\repos\\CamelGame\\CamelGame\\CamelGame.csproj",
+        "projectUniqueName": "C:\\Users\\peter.walkwitz\\source\\repos\\AdvancedGameDesign\\CamelGame\\CamelGame\\CamelGame.csproj",
         "projectName": "CamelGame",
-        "projectPath": "C:\\Users\\peter.walkwitz\\source\\repos\\CamelGame\\CamelGame\\CamelGame.csproj",
+        "projectPath": "C:\\Users\\peter.walkwitz\\source\\repos\\AdvancedGameDesign\\CamelGame\\CamelGame\\CamelGame.csproj",
         "packagesPath": "C:\\Users\\peter.walkwitz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\peter.walkwitz\\source\\repos\\CamelGame\\CamelGame\\obj\\",
+        "outputPath": "C:\\Users\\peter.walkwitz\\source\\repos\\AdvancedGameDesign\\CamelGame\\CamelGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\peter.walkwitz\\AppData\\Roaming\\NuGet\\NuGet.Config",
