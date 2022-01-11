@@ -109,7 +109,7 @@ namespace CamelGame
                 else if (String.Equals(userCommand, "q", StringComparison.CurrentCultureIgnoreCase))
                 {
                     done = true;
-                    Console.WriteLine("Congragulations you are a quitter. You will die of shame instead of thirst");
+                    Console.WriteLine("Congragulations you are a quitter. You will die of shame instead of thirst, smh.");
                 }
                 // Unknown Command
                 else
@@ -137,6 +137,7 @@ namespace CamelGame
                     done = true;
                 }
 
+                // Play again option
                 if (done)
                 {
                     Console.WriteLine("Do you want to play again? (y/n)");
