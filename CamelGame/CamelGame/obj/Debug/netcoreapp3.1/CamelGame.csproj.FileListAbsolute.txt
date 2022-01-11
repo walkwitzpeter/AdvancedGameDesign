@@ -1,0 +1,14 @@
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\bin\Debug\netcoreapp3.1\CamelGame.exe
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\bin\Debug\netcoreapp3.1\CamelGame.deps.json
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\bin\Debug\netcoreapp3.1\CamelGame.runtimeconfig.json
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\bin\Debug\netcoreapp3.1\CamelGame.runtimeconfig.dev.json
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\bin\Debug\netcoreapp3.1\CamelGame.dll
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\bin\Debug\netcoreapp3.1\CamelGame.pdb
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\obj\Debug\netcoreapp3.1\CamelGame.csproj.AssemblyReference.cache
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\obj\Debug\netcoreapp3.1\CamelGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\obj\Debug\netcoreapp3.1\CamelGame.AssemblyInfoInputs.cache
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\obj\Debug\netcoreapp3.1\CamelGame.AssemblyInfo.cs
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\obj\Debug\netcoreapp3.1\CamelGame.csproj.CoreCompileInputs.cache
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\obj\Debug\netcoreapp3.1\CamelGame.dll
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\obj\Debug\netcoreapp3.1\CamelGame.pdb
+C:\Users\peter.walkwitz\source\repos\CamelGame\CamelGame\obj\Debug\netcoreapp3.1\CamelGame.genruntimeconfig.cache
