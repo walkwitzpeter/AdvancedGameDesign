@@ -1,27 +1,68 @@
 ﻿using System;
 
+// Use another class to create instances of game variables such as thirst?
+// Add oasis and a native who is chasing me
+
 namespace CamelGame
 {
 
     static class Constants
     {
+        // Starting values (used for restarting the game)
         public const int startingDrinks = 10;
         public const int finalDest = 100;
         public const int startingHydration = 10;
         public const int startingCamelEnergy = 25;
-
-        public const int moderateTravelSpeed = 5;
-        public const int moderateTravelThirst = 1;
-        public const int moderateTravelCamelTired = 2;
-
-        public const int fastTravelThirst = 2;
-        public const int fastTravelSpeed = 10;
-        public const int fastTravelCamelTired = 5;
-
+        public const int nativeStartingDistance = -20;
+       
     }
 
     class Program
     {
+        // Native Traveling
+        private static int GetNativeTravel ()
+        {
+            Random rand = new Random();
+            int distTraveled = rand.Next(2, 12);
+
+            Console.WriteLine("The native traveled " + distTraveled + " miles.");
+
+            return distTraveled;
+        }
+        // Convert thirst numbers to human feelings
+        private static void ShowThirst (int thirst)
+        {
+            if (thirst < 2)
+            {
+                Console.WriteLine("You are on the verge of death");
+            }
+            else if (thirst < 4)
+            {
+                Console.WriteLine("You are very thirsty");
+            }
+            else if (thirst < 7)
+            {
+                Console.WriteLine("You are getting thirsty");
+            }
+        }
+
+        // Convert Camel energy to human terms
+        private static void ShowCamelEnergy(int camelEnergy) 
+        {
+            if (camelEnergy < 3)
+            {
+                Console.WriteLine("Your camel is on the verge of death");
+            }
+            else if (camelEnergy < 8)
+            {
+                Console.WriteLine("Your camel is very tired");
+            }
+            else if (camelEnergy < 13)
+            {
+                Console.WriteLine("Your camel is getting tired");
+            }
+        }
+
         static void Main(string[] args)
         {
             // Constants
@@ -29,6 +70,8 @@ namespace CamelGame
             int distanceLeft = Constants.finalDest;
             int hydrationLevel = Constants.startingHydration;
             int camelEnergy = Constants.startingCamelEnergy;
+            int nativeLocation = Constants.nativeStartingDistance;
+            int nativeDistTraveled;
             Random rand = new Random();
 
             // Introductory message
@@ -49,11 +92,11 @@ namespace CamelGame
 
                 // Get user command
                 Console.Write("What is your command? ");
-                string userCommand = Console.ReadLine();
+                string userCommand = Console.ReadLine().ToLower();
                 Console.WriteLine();
 
                 // Drinking from flask
-                if (String.Equals(userCommand, "a", StringComparison.CurrentCultureIgnoreCase))
+                if (userCommand.Equals("a"))
                 {
                     if (numOfDrinks > 0)
                     {
@@ -62,7 +105,10 @@ namespace CamelGame
                         hydrationLevel = Constants.startingHydration;
 
                         // Also allowing the camel a short rest while u drink
-                        camelEnergy += 1;
+                        camelEnergy += 2;
+
+                        nativeDistTraveled = GetNativeTravel();
+                        nativeLocation += nativeDistTraveled;
                     }
                     else
                     {
@@ -70,52 +116,58 @@ namespace CamelGame
                     }
                 }
                 // Travelling Slow
-                else if (String.Equals(userCommand, "b", StringComparison.CurrentCultureIgnoreCase))
+                else if (userCommand.Equals("b"))
                 {
-                    int randomDist = rand.Next(5) + Constants.moderateTravelSpeed;
+                    int randomDist = rand.Next(5, 10);
                     distanceLeft -= randomDist;
-                    Console.WriteLine("You have traveled " + randomDist);
+                    Console.WriteLine("You have traveled " + randomDist + " miles.");
 
-                    hydrationLevel -= rand.Next(1) + Constants.moderateTravelThirst;
-
-                    camelEnergy -= rand.Next(3) + Constants.moderateTravelCamelTired;
+                    hydrationLevel -= rand.Next(1, 3);
+                    nativeDistTraveled = GetNativeTravel();
+                    nativeLocation += nativeDistTraveled;
+                    camelEnergy -= rand.Next(4, 6);
 
                 }
                 // Traveling Fast
-                else if (String.Equals(userCommand, "c", StringComparison.CurrentCultureIgnoreCase))
+                else if (userCommand.Equals("c"))
                 {
-                    int randomDist = rand.Next(5) + Constants.fastTravelSpeed;
+                    int randomDist = rand.Next(15, 20);
                     distanceLeft -= randomDist;
-                    Console.WriteLine("You have traveled " + randomDist);
+                    Console.WriteLine("You have traveled " + randomDist + " miles.");
 
-                    hydrationLevel -= rand.Next(3) + Constants.fastTravelThirst;
-
-                    camelEnergy -= rand.Next(5) + Constants.fastTravelCamelTired;
+                    hydrationLevel -= rand.Next(5, 8);
+                    nativeDistTraveled = GetNativeTravel();
+                    nativeLocation += nativeDistTraveled;
+                    camelEnergy -= rand.Next(5, 10);
                 }
                 // Resting the camel
-                else if (String.Equals(userCommand, "d", StringComparison.CurrentCultureIgnoreCase))
+                else if (userCommand.Equals("d"))
                 {
                     camelEnergy = Constants.startingCamelEnergy;
-                    hydrationLevel -= rand.Next(1);
+                    hydrationLevel --;
+                    nativeDistTraveled = GetNativeTravel();
+                    nativeLocation += nativeDistTraveled;
                 }
-                else if (String.Equals(userCommand, "e", StringComparison.CurrentCultureIgnoreCase))
+                // Showing stats
+                else if (userCommand.Equals("e"))
                 {
-                    // Printing out their stats
                     Console.WriteLine("Drinks left in the Canteen: " + numOfDrinks);
-                    Console.WriteLine("Hydration Level: " + hydrationLevel);
                     Console.WriteLine("Distance left to travel: " + distanceLeft);
-                    Console.WriteLine("Camel Energy Levels: " + camelEnergy);
+                    // Calculated native distance a little weird because i didnt have player location, i only had distance left to the end
+                    Console.WriteLine("The native is " + (Constants.finalDest - distanceLeft - nativeLocation) + " miles behind you.");
                 }
-                else if (String.Equals(userCommand, "q", StringComparison.CurrentCultureIgnoreCase))
+                else if (userCommand.Equals("q"))
                 {
                     done = true;
                     Console.WriteLine("Congragulations you are a quitter. You will die of shame instead of thirst, smh.");
                 }
+
                 // Unknown Command
                 else
                 {
                     Console.WriteLine("Unknown command.");
                 }
+
                 
                 // Checking to see if they are dead, or done
                 if (hydrationLevel <= 0 || camelEnergy <= 0)
@@ -128,6 +180,11 @@ namespace CamelGame
                     {
                         collapseString = "an exhausted camel.";
                     }
+                    // Checking if the native has caught up (done a little weird because I am not keeping tack of the player, but instead the distance left)
+                    else if (nativeLocation >= Constants.finalDest - distanceLeft)
+                    {
+                        collapseString = "an angry native catching up to you.";
+                    }
                     Console.WriteLine("You have collapsed in the middle of the desert from " + collapseString);
                     done = true;
                 }
@@ -135,6 +192,12 @@ namespace CamelGame
                 {
                     Console.WriteLine("You have succesfully escaped with the stolen camel. Good job your a horrible human being.");
                     done = true;
+                }
+                // Showing they are thirsty, and how far the native travelled (if they are and havn't won or died)
+                else
+                {
+                    ShowThirst(hydrationLevel);
+                    ShowCamelEnergy(camelEnergy);
                 }
 
                 // Play again option
@@ -148,6 +211,7 @@ namespace CamelGame
                         distanceLeft = Constants.finalDest;
                         hydrationLevel = Constants.startingHydration;
                         camelEnergy = Constants.startingCamelEnergy;
+                        nativeLocation = Constants.nativeStartingDistance;
                         done = false;
                     }
                 }

@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CamelGame"
   ],
-  "SelectedNode": "\\CamelGame.sln",
+  "SelectedNode": "\\CamelGame\\My Game.cs",
   "PreviewInSolutionExplorer": false
 }
